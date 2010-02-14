@@ -128,4 +128,29 @@ Content-Type: text/plain\r
     end
 
   end
+  
+  context "Payload behaviour" do
+    before(:each) do
+      @payload = RestClient::Payload.generate("line1\nline2")
+    end
+    it "should respond to gets" do
+      @payload.should respond_to(:gets)
+      @payload.gets.should == "line1\n"
+    end
+    it "should respond to read" do
+      @payload.should respond_to(:read)
+      @payload.read.should == "line1\nline2"
+    end
+    it "should respond to each" do
+      @payload.should respond_to(:each)
+      data = ""
+      @payload.each do |block|
+        data.concat block
+      end
+      data.should == "line1\nline2"
+    end
+    it "should respond to close" do
+      @payload.should respond_to(:close)
+    end
+  end
 end

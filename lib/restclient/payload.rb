@@ -45,6 +45,14 @@ module RestClient
         @stream.read(bytes)
       end
 
+      def gets(*args)
+        @stream.gets(*args)
+      end
+      
+      def each(&block)
+        @stream.each(&block)
+      end
+      
       alias :to_s :read
 
       def escape(v)
