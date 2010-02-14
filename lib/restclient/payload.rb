@@ -53,6 +53,10 @@ module RestClient
         @stream.each(&block)
       end
       
+      def rewind(*args)
+        @stream.rewind(*args)
+      end
+      
       alias :to_s :read
 
       def escape(v)

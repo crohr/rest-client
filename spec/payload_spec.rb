@@ -152,5 +152,8 @@ Content-Type: text/plain\r
     it "should respond to close" do
       @payload.should respond_to(:close)
     end
+    it "should respond to rewind" do
+      @payload.should respond_to(:rewind)
+    end
   end
 end
